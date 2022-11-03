@@ -39,7 +39,8 @@ public class UserDB {
                 int roleId = rs.getInt(5);
                 RoleDB rd = new RoleDB();
                 Role role = rd.get(roleId);
-                User user = new User(email, firstName, lastName, password, role);
+                User user = new User(email, firstName, lastName, password);
+                user.setRole(role);
                 users.add(user);
             }
         } finally {
@@ -70,7 +71,8 @@ public class UserDB {
                 int roleId = rs.getInt(5);
                 RoleDB rd = new RoleDB();
                 Role role = rd.get(roleId);
-                user = new User(email, firstName, lastName, password, role);
+                user = new User(email, firstName, lastName, password);
+                user.setRole(role);
             }
         } finally {
             DBUtil.closeResultSet(rs);
